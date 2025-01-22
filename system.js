@@ -74,8 +74,8 @@ function game_roop() {
     if (isFPS['ArrowLeft'] && isx >= 0) {
         isx -= speed;
     }
-    cv.adaptation('test2','#00ff00',0,0,500,500)
-    cv.adaptation('test','#0000ff',isx,isy,500,340)
+    cv.adaptation('test2','#00ff00',0,0,1260,644)
+    cv.adaptation('test','#0000ff',isx,isy,100,100)
     requestAnimationFrame(game_roop)
 }
 window.addEventListener("keydown",function(event){
