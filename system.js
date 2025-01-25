@@ -1,3 +1,4 @@
+
 const leisatescript = {
     date: {},
     creation: {
@@ -21,6 +22,20 @@ const leisatescript = {
         },
     },
     gameleisate:{
+        functions:{
+            create:function(creation_name,function_name,creation_function){
+                leisatescript.date.creation[creation_name][function_name] = creation_function
+            },
+            adaptation:function(creation_name,function_name){
+                leisatescript.date.creation[creation_name][function_name]();
+            },
+            infinityAdaptation:function(creation_name,function_name){
+                if(leisatescript.date.creation[creation_name].tf){
+                    leisatescript.date.creation[creation_name][function_name]();
+                    requestAnimationFrame(function(){leisatescript.gameleisate.functions.infinityAdaptation(creation_name,function_name,leisatescript.date.creation[creation_name].tf)})
+                }
+            }
+            },
         canvas:{
             create:function(creation_name,creation_width,creation_height,type,iszindex){
                 const canvas = document.createElement('canvas');
@@ -46,6 +61,13 @@ const leisatescript = {
                         ctx.drawImage(img, cx, cy, creation_width, creation_height)
                     }
                 }
+            },
+            deleteAll:function(){
+                Array.from(document.getElementsByTagName('canvas')).forEach(function(iscanvas,index){
+                const cre = document.getElementsByTagName('canvas')[index]
+                const ctx = cre.getContext('2d')
+                ctx.clearRect(0, 0, cre.width, cre.height)
+            });
             }
         },
     }
